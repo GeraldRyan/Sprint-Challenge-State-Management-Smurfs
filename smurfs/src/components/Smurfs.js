@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchSmurf,postSmurf } from '../Store/actions/smurfActions'
+import { fetchSmurf, postSmurf, deleteSmurf } from '../Store/actions/smurfActions'
 
 const Smurfs = (props) =>
 {
@@ -14,6 +14,8 @@ const [formState, setFormState] = React.useState({
   age: 1,
   height: "",
 })
+
+const [id, setID] = React.useState(0)
 
 const handleClick = (e) =>{
   e.preventDefault()
@@ -34,6 +36,24 @@ const inputChange = e =>{
   console.log("Form State", formState)
 }
 
+const inputChangeId = e =>{
+  e.persist()
+  console.log(e.target.value)
+  const newID = e.target.value
+  setID(newID)
+  // setID(e.target.Value)  // displays correctly
+  console.log("Id", id)  // why shows undefined? 
+}
+
+
+const deleteSmurf = (e) =>{
+  e.preventDefault()
+  props.deleteSmurf(id)
+  setTimeout(() => {props.fetchSmurf()
+    
+  }, 500);
+  props.fetchSmurf()
+}
 
   return (
     <div>Passed
@@ -44,6 +64,8 @@ const inputChange = e =>{
       <div>Smurf Name: {smurf.name}</div>
       <div>Smurf Age: {smurf.age}</div>
       <div>Smurf Height: {smurf.height}</div>
+      <div>Smurf ID: {smurf.id}</div>
+
       <br/>
       </>
     ))}
@@ -56,6 +78,11 @@ const inputChange = e =>{
   <input type="text" name='height' placeholder="height" value ={formState.height} onChange={inputChange}/>
   <br/>
   <button type="submit" onClick={handleClick}>Submit</button>
+</form>
+<br/>
+<form action="">
+<input type="text" name='id' placeholder="ID" value ={formState.id} onChange={inputChangeId}/>
+<button onClick={deleteSmurf}>Delete Smurf by ID</button>
 
 </form>
 
@@ -72,4 +99,4 @@ const mapStateToProps = state =>
   }
 }
 
-export default connect(mapStateToProps, { fetchSmurf, postSmurf })(Smurfs)
+export default connect(mapStateToProps, { fetchSmurf, postSmurf, deleteSmurf })(Smurfs)
