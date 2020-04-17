@@ -1,4 +1,4 @@
-export const initialState = [{
+export const initialState = {
   smurfSet: {
     name: "Brainey",   // This level may not be necessary or even mvp as api supposed to return
     age: "200",
@@ -8,13 +8,12 @@ export const initialState = [{
   isFetching:false,
   isPosting:false,
   error: false
-}]
+}
 
-
-const url = "http://localhost:3333/smurfs"
 
 export const smurfReducer = (state = initialState, action) =>
 {
+  console.log("state in reducer:", state)
   switch (action.type)
   {
     case 'FETCH_SMURF_START':
@@ -53,5 +52,7 @@ export const smurfReducer = (state = initialState, action) =>
         isPosting:false,
         error:action.payload
       }
+      default:
+        return state
   }
 }
