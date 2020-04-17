@@ -18,6 +18,9 @@ const [formState, setFormState] = React.useState({
 const handleClick = (e) =>{
   e.preventDefault()
   props.postSmurf(formState)
+  setTimeout(() => {props.fetchSmurf()
+    
+  }, 1000);
   props.fetchSmurf()
 }
 
