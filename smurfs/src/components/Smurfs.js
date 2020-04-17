@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchSmurf } from '../Store/actions/smurfActions'
+import { fetchSmurf,postSmurf } from '../Store/actions/smurfActions'
 
 const Smurfs = (props) =>
 {
@@ -8,6 +8,23 @@ const Smurfs = (props) =>
   {
     props.fetchSmurf()
   }, [])
+
+const [formState, setFormState] = React.useState({
+  name: "",   
+  age: "",
+  height: "",
+  id: Math.floor(Date.now())
+})
+
+const handleClick = (e) =>{
+  e.preventDefault()
+  props.postSmurf()
+}
+
+
+
+
+
 
   return (
     <div>Passed
@@ -21,7 +38,16 @@ const Smurfs = (props) =>
       </>
     ))}
 
+<form action="">
+  <input type="text" placeholder="New Smurf Name"/>
+  <br/>
+  <input type="number" placeholder="age"/>
+  <br/>
+  <input type="text" placeholder="height"/>
+  <br/>
+  <button type="submit" onClick={handleClick}>Submit</button>
 
+</form>
 
     </div>
   )
@@ -36,4 +62,4 @@ const mapStateToProps = state =>
   }
 }
 
-export default connect(mapStateToProps, { fetchSmurf })(Smurfs)
+export default connect(mapStateToProps, { fetchSmurf, postSmurf })(Smurfs)

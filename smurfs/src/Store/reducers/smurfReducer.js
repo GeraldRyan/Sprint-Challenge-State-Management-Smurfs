@@ -1,7 +1,7 @@
 export const initialState = {
   smurfSet: {
     data: [{
-      name: "",   // This level may not be necessary or even mvp as api supposed to return
+      name: "",   
       age: "",
       height: "",
       id: 0
