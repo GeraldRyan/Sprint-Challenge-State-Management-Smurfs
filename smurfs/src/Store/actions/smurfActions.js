@@ -39,9 +39,10 @@ export const postSmurf = (formState) =>
       })
       .catch(err =>
       {
+        console.log("Error object in Posting: \n", err)
         dispatch({
           type: 'POST_SMURF_FAIL',
-          // payload: `Error, ${err.response.status}: ${err.response.data}`
+          payload: err
         })
       })
   }
