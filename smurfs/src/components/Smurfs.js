@@ -13,7 +13,6 @@ const [formState, setFormState] = React.useState({
   name: "",   
   age: 222,
   height: "22",
-  id: Math.floor(Date.now())
 })
 
 const handleClick = (e) =>{
@@ -41,6 +40,7 @@ const inputChange = e =>{
       <div>Smurf Name: {smurf.name}</div>
       <div>Smurf Age: {smurf.age}</div>
       <div>Smurf Height: {smurf.height}</div>
+      <br/>
       </>
     ))}
 

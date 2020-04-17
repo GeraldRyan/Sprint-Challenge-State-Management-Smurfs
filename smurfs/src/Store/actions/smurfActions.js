@@ -41,7 +41,7 @@ export const postSmurf = (formState) =>
       {
         dispatch({
           type: 'POST_SMURF_FAIL',
-          payload: `Error, ${err.response.status}: ${err.response.data}`
+          // payload: `Error, ${err.response.status}: ${err.response.data}`
         })
       })
   }
