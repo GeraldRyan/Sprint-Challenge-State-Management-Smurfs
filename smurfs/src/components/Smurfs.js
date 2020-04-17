@@ -11,7 +11,7 @@ const Smurfs = (props) =>
 
 const [formState, setFormState] = React.useState({
   name: "",   
-  age: 1,
+  age: null,
   height: "",
 })
 
@@ -71,10 +71,13 @@ const deleteSmurf = (e) =>{
     ))}
 
 <form action="" onSubmit={handleClick}>
+  <label htmlFor="name">Name: </label>
   <input type="text" name="name" placeholder="New Smurf Name" value ={formState.name} onChange={inputChange}/>
   <br/>
+  <label htmlFor="age"> Age:  </label>
   <input type="number" name="age" placeholder="age" value ={formState.age} onChange={inputChange}/>
   <br/>
+  <label htmlFor='height'>Height:</label>
   <input type="text" name='height' placeholder="height" value ={formState.height} onChange={inputChange}/>
   <br/>
   <button type="submit" onClick={handleClick}>Submit</button>
