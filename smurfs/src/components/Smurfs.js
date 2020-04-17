@@ -15,7 +15,7 @@ const [formState, setFormState] = React.useState({
   height: "",
 })
 
-const [id, setID] = React.useState(0)
+const [id, setID] = React.useState()
 
 const handleClick = (e) =>{
   e.preventDefault()
