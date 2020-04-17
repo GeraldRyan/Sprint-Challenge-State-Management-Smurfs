@@ -11,19 +11,25 @@ const Smurfs = (props) =>
 
 const [formState, setFormState] = React.useState({
   name: "",   
-  age: "",
-  height: "",
+  age: 222,
+  height: "22",
   id: Math.floor(Date.now())
 })
 
 const handleClick = (e) =>{
   e.preventDefault()
-  props.postSmurf()
+  props.postSmurf(formState)
 }
 
-
-
-
+const inputChange = e =>{
+  e.persist()
+  const newFormData = {
+    ...formState,
+    [e.target.name]:e.target.value
+  }
+  setFormState(newFormData)
+  console.log("FOrm State", formState)
+}
 
 
   return (
@@ -38,12 +44,12 @@ const handleClick = (e) =>{
       </>
     ))}
 
-<form action="">
-  <input type="text" placeholder="New Smurf Name"/>
+<form action="" onSubmit={handleClick}>
+  <input type="text" name="name" placeholder="New Smurf Name" value ={formState.name} onChange={inputChange}/>
   <br/>
-  <input type="number" placeholder="age"/>
+  <input type="number" name="age" placeholder="age"/>
   <br/>
-  <input type="text" placeholder="height"/>
+  <input type="text" name='height' placeholder="height"/>
   <br/>
   <button type="submit" onClick={handleClick}>Submit</button>
 
