@@ -38,17 +38,22 @@ export const smurfReducer = (state = initialState, action) =>
         error: action.payload
       }
     case 'POST_SMURF_START':
+      console.log("POST SMURF START")
+
       return {
         ...state,
         isPosting: true
       }
     case 'POST_SMURF_SUCCESS':
+      console.log("POST SMURF SUCCESS")
+
       return {
         ...state,
         isPosting: false,
         smurfSet: [...state.smurfSet, action.payload]
       }
     case 'POST_SMURF_FAIL':
+      console.log("POST SMURF FAIL")
       return {
         ...state,
         isPosting: false,
