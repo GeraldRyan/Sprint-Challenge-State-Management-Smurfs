@@ -10,16 +10,29 @@ const Smurfs = (props) =>
   }, [])
 
   return (
-    <div>Passed</div>
+    <div>Passed
+      <br/>
+      <br/>
+    {props.smurfSet.map((smurf)=>(
+      <>
+      <div>Smurf Name: {smurf.name}</div>
+      <div>Smurf Age: {smurf.age}</div>
+      <div>Smurf Height: {smurf.height}</div>
+      </>
+    ))}
+
+
+
+    </div>
   )
 }
 
 
 const mapStateToProps = state =>
 {
-  console.log("state", state)
+  console.log("state", state.smurfSet.data)
   return {
-    smurfSet: state.smurfSet
+    smurfSet: state.smurfSet.data
   }
 }
 

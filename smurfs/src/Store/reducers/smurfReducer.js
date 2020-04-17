@@ -1,12 +1,14 @@
 export const initialState = {
   smurfSet: {
-    name: "Brainey",   // This level may not be necessary or even mvp as api supposed to return
-    age: "200",
-    height: "5cm",
-    id: 0
+    data: [{
+      name: "",   // This level may not be necessary or even mvp as api supposed to return
+      age: "",
+      height: "",
+      id: 0
+    }]
   },
-  isFetching:false,
-  isPosting:false,
+  isFetching: false,
+  isPosting: false,
   error: false
 }
 
@@ -19,40 +21,40 @@ export const smurfReducer = (state = initialState, action) =>
     case 'FETCH_SMURF_START':
       return {
         ...state,
-        isFetching:true
+        isFetching: true
       }
     case 'FETCH_SMURF_SUCCESS':
       return {
         ...state,
-        isFetching:false,
-        smurfSet:action.payload,
-        error:''
-        
+        isFetching: false,
+        smurfSet: action.payload,
+        error: ''
+
       }
     case 'FETCH_SMURF_FAIL':
       return {
         ...state,
-        isFetching:false,
-        error:action.payload
+        isFetching: false,
+        error: action.payload
       }
     case 'POST_SMURF_START':
       return {
         ...state,
-        isPosting:true
+        isPosting: true
       }
     case 'POST_SMURF_SUCCESS':
       return {
         ...state,
-        isPosting:false,
-        smurfSet:[...state.smurfSet, action.payload]
+        isPosting: false,
+        smurfSet: [...state.smurfSet, action.payload]
       }
     case 'POST_SMURF_FAIL':
       return {
         ...state,
-        isPosting:false,
-        error:action.payload
+        isPosting: false,
+        error: action.payload
       }
-      default:
-        return state
+    default:
+      return state
   }
 }
