@@ -20,7 +20,7 @@ const handleClick = (e) =>{
   props.postSmurf(formState)
   setTimeout(() => {props.fetchSmurf()
     
-  }, 1000);
+  }, 500);
   props.fetchSmurf()
 }
 
